@@ -1,4 +1,4 @@
-package com.inspur;
+package com.hello;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,18 +18,18 @@ public class Test {
         StringBuffer sb=new StringBuffer();
         while((fis.read(buf))!=-1){
             sb.append(new String(buf));    
-            buf=new byte[1024];//重新生成，避免和上次读取的数据重复
+            buf=new byte[1024];
         }
         fis.close();
         return sb.toString();
     }
 
 	public String getInputMessage() throws IOException {
-		System.out.println("请输入您的命令∶");
+		System.out.println("请输入命令∶");
 		byte buffer[] = new byte[1024];
 		int count = System.in.read(buffer);
-		char[] ch = new char[count - 2];// 最后两位为结束符，删去不要
-		for (int i = 0; i < count - 2; i++)
+		char[] ch = new char[count - 1];
+		for (int i = 0; i < count - 1; i++)
 			ch[i] = (char) buffer[i];
 		String str = new String(ch);
 		return str;
